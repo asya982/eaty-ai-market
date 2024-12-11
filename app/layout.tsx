@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Header } from "@/components/header/header";
+import { Providers } from "./providers";
+import { verifySession } from "@/lib/services/sessions";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,17 +21,21 @@ export const metadata: Metadata = {
   description: "Eaty is the next level of the shopping experience",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { isAuth } = await verifySession();
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          <Header isAuth={isAuth} />
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );
