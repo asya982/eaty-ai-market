@@ -22,7 +22,6 @@ const Products = async ({ searchParams }) => {
         <CategoriesList categories={categories} />
       </div>
       <RecommendedSection recommendedList={products?.slice(6, -1) || []} />
-
       <div className='gap-2 grid grid-cols-2 sm:grid-cols-4'>
         {products?.map(el => (
           <ProductCard key={el._id} product={el} />

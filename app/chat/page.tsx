@@ -45,15 +45,15 @@ Serve immediately and enjoy a healthy, nut-free meal! Here your list of healthy 
 
 const Chat = () => {
   return (
-    <section className='m-6'>
-      <div className='flex justify-between items-center text-lg my-6 border-b-2 pb-2'>
+    <section className='m-6 flex flex-col max-h-[82vh]'>
+      <div className='flex justify-between items-center border-b-2 pb-2'>
         <h1 className='font-playfair font-bold text-2xl'>Eaty AI Chat</h1>
-        <div className='text-end'>
+        <div className='text-end text-md'>
           <h2>Generate you product list for today!</h2>
           <h2>Hesitate what to take? No worries, we can handle it!</h2>
         </div>
       </div>
-      <section className="bg-[url('@/assets/chat.jpg')] rounded-xl h-[65vh] overflow-auto bg-cover p-6">
+      <section className="bg-[url('@/assets/chat.jpg')] rounded-xl flex-1 overflow-auto bg-cover p-6">
         <MessagesList history={history} />
       </section>
       <div className='flex w-full mt-4 items-center gap-3 h-full'>

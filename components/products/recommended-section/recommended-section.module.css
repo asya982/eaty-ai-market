@@ -1,23 +1,21 @@
 .carousel {
   max-height: 300px;
-  max-width: 100%;
+  max-width: 50%;
+  margin: 0 auto;
   overflow: hidden;
   display: flex;
-  > * {
-    flex: 0 0 40%;
-  }
-
-  &:hover .group {
-    animation-play-state: paused;
-  }
+}
+.carousel > * {
+  flex: 0 0 40%;
+}
+.carousel:hover .group {
+  animation-play-state: paused;
 }
 
 .group {
-  gap: 20px;
-  padding-right: 20px;
   display: flex;
   will-change: transform;
-  animation: scrolling linear infinite;
+  animation: scrolling 10s linear infinite;
 }
 
 @keyframes scrolling {
@@ -25,6 +23,6 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-200%);
+    transform: translateX(-300%);
   }
 }

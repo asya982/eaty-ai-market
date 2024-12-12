@@ -16,7 +16,7 @@ const Message: FC<TMessageProps> = ({ date, message, recommendations = [], cardS
     const time = `${date.getHours()}:${date.getMinutes()}`
     return (
         <div className={`flex flex-col gap-2 ${containerStyles}`}>
-            <div className={`border-none max-w-screen-md rounded-lg p-3 backdrop-blur-3xl`}>
+            <div className={`border-none w-fit max-w-screen-md rounded-lg p-3 backdrop-blur-3xl`}>
                 <div className='flex flex-col gap-2'>
                     <p>{message}</p>
                     {!!recommendations.length && <RecommendationList recommendations={recommendations} />}

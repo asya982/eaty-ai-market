@@ -2,7 +2,7 @@
 
 import { TProducts } from '@/types/products'
 import { Badge } from '@nextui-org/react'
-import React, { FC, useCallback } from 'react'
+import React, { FC } from 'react'
 import { ProductCard } from '../product-card'
 import Image from 'next/image'
 import forYou from '@/assets/for_you.png'
@@ -37,12 +37,12 @@ export const RecommendedSection: FC<TRecommendedSectionProps> = ({
         className='text-white'
         showOutline={false}
       >
-        <h2 className='font-playfair text-6xl underline flex items-center gap-3'>
+        <h2 className='font-playfair text-3xl underline flex items-center gap-3'>
           <Image
             alt='recommendation photo'
             src={isPersonal ? forYou : recommend}
-            width={50}
-            height={50}
+            width={70}
+            height={70}
           />
           {isPersonal ? 'You might like it' : 'Our customers liked it'}
         </h2>
