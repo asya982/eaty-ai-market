@@ -30,11 +30,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
       >
         <Providers>
           <Header isAuth={isAuth} />
-          <main>{children}</main>
+          <main className="h-full">{children}</main>
         </Providers>
       </body>
     </html>

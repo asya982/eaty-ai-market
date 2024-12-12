@@ -8,6 +8,8 @@ import logo from "@/assets/store.png";
 import Cart from "@/components/header/cart";
 import { usePathname } from "next/navigation";
 import { Routes } from "@/enums/routes";
+import { Button } from "@nextui-org/react";
+import { logout } from "@/lib/actions/auth";
 
 const WITHOUT_HEADER = [Routes.LOG_IN, Routes.SIGN_UP] as string[];
 
@@ -27,11 +29,13 @@ export const Header: FC<{ isAuth?: boolean }> = ({ isAuth = false }) => {
           <NavLink href={Routes.PRODUCTS} linkName="Products" />
         </div>
         {isAuth ? (
-          <Cart />
+          <>
+            <Button onPress={async () => await logout()}>Log out</Button>
+            <Cart />
+          </>
         ) : (
-          <div>
-            <NavLink href={Routes.SIGN_UP} linkName={"Sign up"} />
-          </div>
+          <NavLink href={Routes.SIGN_UP} linkName={"Sign up"} />
+
         )}
       </nav>
     </header>

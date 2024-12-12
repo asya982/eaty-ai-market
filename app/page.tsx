@@ -2,8 +2,10 @@ import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
 import { Routes } from "@/enums/routes";
 import { AccordionSection } from "@/components/landing/accordion";
+import { verifySession } from "@/lib/services/sessions";
 
-export default function Home() {
+export default async function Home() {
+  const { isAuth, name } = await verifySession()
   return (
     <section>
       <section className="bg-transparent h-[80vh] flex items-center">
@@ -19,7 +21,7 @@ export default function Home() {
             been easier.
           </p>
           <div className="flex gap-4 justify-evenly w-full">
-            <Button
+            {isAuth ? <p>Welcome back, {name}</p> : <><Button
               as={Link}
               href={Routes.LOG_IN}
               color="warning"
@@ -27,14 +29,14 @@ export default function Home() {
             >
               Log in
             </Button>
-            <Button
-              as={Link}
-              href={Routes.SIGN_UP}
-              color="warning"
-              variant="bordered"
-            >
-              Sign up
-            </Button>
+              <Button
+                as={Link}
+                href={Routes.SIGN_UP}
+                color="warning"
+                variant="bordered"
+              >
+                Sign up
+              </Button></>}
           </div>
         </aside>
       </section>

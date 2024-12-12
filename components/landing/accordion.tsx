@@ -5,8 +5,8 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 
 export const AccordionSection = () => {
   return (
-    <section className="flex mt-[20vh] p-5 h-[50vh] items-center">
-      <Accordion className="w-64">
+    <section className="flex mt-[20vh] p-5 h-[50vh] items-center justify-evenly">
+      <Accordion className="w-3/6">
         <AccordionItem
           key="1"
           aria-label="Accordion 1"
@@ -38,7 +38,7 @@ export const AccordionSection = () => {
           </p>
         </AccordionItem>
       </Accordion>
-      <h3 className="flex-1">Why Choose Eaty?</h3>
+      <h3 className="text-4xl font-playfair underline">Why Choose Eaty?</h3>
     </section>
   );
 };

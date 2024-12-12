@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,15 +9,7 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -24,4 +17,91 @@ body {
   .transition-up {
    @apply hover:-translate-y-1 transition-all
   }
+}
+
+@keyframes fade-slide-in-from-left {
+  0% {
+      opacity: 0;
+      transform: translateX(-1rem);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fade-slide-in-from-right {
+  0% {
+      opacity: 0;
+      transform: translateX(1rem);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fade-slide-in-from-bottom {
+  0% {
+      opacity: 0;
+      transform: translateY(1rem);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes flash {
+  0% {
+      opacity: 0;
+  }
+
+  50% {
+      opacity: 1;
+  }
+
+  100% {
+      opacity: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 12px; 
+  height: 12px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 6px; 
+  border: 2px solid transparent; 
+  background-clip: content-box; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; 
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; 
+  border-radius: 6px; 
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #f1f1f1;
+}
+
+/* Styles for Firefox using scrollbar-width and scrollbar-color */
+* {
+  scrollbar-width: thin; 
+  scrollbar-color: #888 #f1f1f1; 
+}
+
+/* Custom styles for Edge, IE, and fallback for all browsers */
+html {
+  scrollbar-face-color: #888; 
+  scrollbar-track-color: #f1f1f1;
 }

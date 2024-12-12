@@ -4,8 +4,8 @@ import {
   categoriesMock,
   productsMock,
 } from "@/lib/seeds/constantData";
-import { Allergen } from "@/models/Allergen";
-import { Category } from "@/models/Category";
+import { Allergen, IAllergen } from "@/models/Allergen";
+import { Category, ICategory } from "@/models/Category";
 import { Product } from "@/models/Product";
 import { faker } from "@faker-js/faker";
 
@@ -16,14 +16,13 @@ export async function seedDatabase() {
   await Category.deleteMany({});
   await Product.deleteMany({});
 
-  const allergensFromDb = await Allergen.insertMany(allergensMock);
-  const categories = await Category.insertMany(categoriesMock);
+  const allergensFromDb: IAllergen[] = await Allergen.insertMany(allergensMock);
+  const categories: ICategory[] = await Category.insertMany(categoriesMock);
 
   const updatedProducts = productsMock.map((product) => ({
     ...product,
     price: faker.commerce.price({ min: 5, max: 50 }),
     quantity: faker.number.int({ min: 10, max: 200 }),
-    img: "",
     allergens: allergensFromDb.filter(({ name }) =>
       product.allergens.includes(name)
     ),

@@ -20,8 +20,7 @@ export default function Login() {
     ) as TLoginInfoDto;
 
     const { status } = await login(data);
-
-    if (status === 201) redirect("/");
+    if (status === 200) redirect("/");
     setIsLoading(false);
   };
 
