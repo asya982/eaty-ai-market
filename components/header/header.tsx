@@ -14,7 +14,7 @@ import { logout } from '@/lib/actions/auth'
 const WITHOUT_HEADER = [Routes.LOG_IN, Routes.SIGN_UP] as string[]
 
 export const Header: FC<{ isAuth?: boolean }> = ({ isAuth = false }) => {
-  const pathname = usePathname()
+  const pathname = usePathname() || ''
   const router = useRouter()
 
   if (WITHOUT_HEADER.includes(pathname)) return null

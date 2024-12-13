@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose, { Model } from 'mongoose'
 
 export interface IAllergen extends mongoose.Document {
-  name: string;
+  name: string
 }
 
 const AllergenSchema = new mongoose.Schema<IAllergen>({
@@ -10,7 +10,7 @@ const AllergenSchema = new mongoose.Schema<IAllergen>({
     required: true,
     maxlength: 50,
   },
-});
+})
 
-export const Allergen =
-  mongoose.models.Allergens || mongoose.model("Allergens", AllergenSchema);
+export const Allergen: Model<IAllergen> =
+  mongoose.models.Allergens || mongoose.model('Allergens', AllergenSchema)

@@ -1,16 +1,16 @@
-"use client";
-import React from "react";
+'use client'
+import React from 'react'
 
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import { Accordion, AccordionItem } from '@nextui-org/accordion'
 
 export const AccordionSection = () => {
   return (
-    <section className="flex mt-[20vh] p-5 h-[50vh] items-center justify-evenly">
-      <Accordion className="w-3/6">
+    <section className='flex mt-[20vh] p-5 h-[50vh] items-center justify-evenly'>
+      <Accordion className='w-3/6'>
         <AccordionItem
-          key="1"
-          aria-label="Accordion 1"
-          title="Personalized Recommendations"
+          key='1'
+          aria-label='Accordion 1'
+          title='Personalized Recommendations'
         >
           <p>
             Powered by advanced AI, Eaty suggests products based on your
@@ -18,9 +18,9 @@ export const AccordionSection = () => {
           </p>
         </AccordionItem>
         <AccordionItem
-          key="2"
-          aria-label="Accordion 2"
-          title="Simplified Search"
+          key='2'
+          aria-label='Accordion 2'
+          title='Simplified Search'
         >
           <p>
             Use our intuitive filters and search tools to browse products by
@@ -28,9 +28,9 @@ export const AccordionSection = () => {
           </p>
         </AccordionItem>
         <AccordionItem
-          key="3"
-          aria-label="Accordion 3"
-          title="Smart Shopping List"
+          key='3'
+          aria-label='Accordion 3'
+          title='Smart Shopping List'
         >
           <p>
             Tell our chatbot what you need, and it will generate a curated
@@ -38,7 +38,7 @@ export const AccordionSection = () => {
           </p>
         </AccordionItem>
       </Accordion>
-      <h3 className="text-4xl font-playfair underline">Why Choose Eaty?</h3>
+      <h3 className='text-4xl font-playfair underline'>Why Choose Eaty?</h3>
     </section>
-  );
-};
+  )
+}

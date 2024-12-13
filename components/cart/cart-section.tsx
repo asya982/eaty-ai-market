@@ -18,7 +18,7 @@ export const CartSection = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(cartItems), // Send orderDTO data
+        body: JSON.stringify(cartItems),
       })
 
       const { status } = await response.json()

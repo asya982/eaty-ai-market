@@ -8,10 +8,13 @@ import { calculateTotalPrice } from '@/utils/cart'
 import { ItemCount } from '../products/product/item-count'
 import { Button } from '@nextui-org/react'
 
-type TCartItemProps = TCartItem & { showControls?: boolean }
+type TCartItemProps = Omit<TCartItem, 'productId'> & {
+  showControls?: boolean
+  productId?: string
+}
 
 export const CartItem: FC<TCartItemProps> = ({
-  productId,
+  productId = '',
   name,
   img,
   price,
@@ -20,10 +23,18 @@ export const CartItem: FC<TCartItemProps> = ({
 }) => {
   return (
     <div className='flex items-center gap-5 border-1 rounded-md p-3'>
-      <Image src={img} width={100} height={100} className='object-cover' />
+      <Image
+        src={img}
+        alt={name}
+        aria-label={name + 'image'}
+        width={100}
+        height={100}
+        className='object-cover'
+      />
       <Link
         underline='hover'
         color='foreground'
+        aria-label={`go to ${name} page`}
         href={`/products/${productId}`}
         className='font-bold text-xl'
       >
@@ -32,7 +43,7 @@ export const CartItem: FC<TCartItemProps> = ({
 
       <div className='flex flex-1 items-center justify-end gap-4'>
         {showControls ? (
-          <ItemCount initialCount={quantity} />
+          <ItemCount initialCount={quantity} onCountChange={() => {}} />
         ) : (
           <p>{quantity}</p>
         )}

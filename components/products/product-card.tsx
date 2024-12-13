@@ -41,7 +41,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         <div className='flex justify-between items-center w-full'>
           <p className=''>${product.price || faker.commerce.price()}</p>
           <Tooltip content='Add to the cart!' showArrow>
-            <Button size='sm' isIconOnly variant='flat'>
+            <Button aria-label='add to the cart' size='sm' isIconOnly variant='flat'>
               <ShoppingCart />
             </Button>
           </Tooltip>

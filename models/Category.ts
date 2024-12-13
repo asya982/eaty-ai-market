@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+import mongoose, { Model } from 'mongoose'
 
 export interface ICategory extends mongoose.Document {
-  name: string;
-  icon: string;
+  name: string
+  icon: string
 }
 
 const CategorySchema = new mongoose.Schema<ICategory>({
@@ -12,7 +12,7 @@ const CategorySchema = new mongoose.Schema<ICategory>({
     maxlength: 50,
   },
   icon: { type: String },
-});
+})
 
-export const Category =
-  mongoose.models.Categories || mongoose.model("Categories", CategorySchema);
+export const Category: Model<ICategory> =
+  mongoose.models.Categories || mongoose.model('Categories', CategorySchema)

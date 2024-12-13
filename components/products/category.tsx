@@ -6,10 +6,14 @@ import React, { FC } from 'react'
 type TCategoryProps = TCategory
 
 export const Category: FC<TCategoryProps> = ({ name, icon }) => {
-    return (
-        <Chip variant='shadow' color={COLORS[Math.floor(Math.random() * COLORS.length)]}
-            className='cursor-pointer' startContent={<p>{icon}</p>}>
-            {name}
-        </Chip>
-    )
+  return (
+    <Chip
+      variant='shadow'
+      color={COLORS[Math.floor(Math.random() * COLORS.length)]}
+      className='cursor-pointer'
+      startContent={<p>{icon}</p>}
+    >
+      {name}
+    </Chip>
+  )
 }

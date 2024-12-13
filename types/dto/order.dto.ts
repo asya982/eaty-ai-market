@@ -1,9 +1,7 @@
-export type createOrderDto = {
-    products: Array<OrderProduct>;
-}
+export type createOrderDto = Array<OrderProduct>
 
 export type OrderProduct = {
-    productId: string;
-    quantity: number;
-    price: number;
+  productId: string
+  quantity: number
+  price: number
 }

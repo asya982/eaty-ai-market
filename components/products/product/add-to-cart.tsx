@@ -52,6 +52,7 @@ export const AddToCart: FC<TAddToCartProps> = ({
         }
       />
       <Button
+        aria-label='add to the cart'
         color='warning'
         className='text-white'
         isDisabled={itemCount <= 0}

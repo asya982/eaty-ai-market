@@ -1,1 +1,2 @@
-export const calculateTotalPrice = (quantity: number, price: number): string => '$' + (price * quantity).toFixed(2)
+export const calculateTotalPrice = (quantity: number, price: number): string =>
+  '$' + (price * quantity).toFixed(2)

@@ -1,16 +1,21 @@
 'use client'
 
+import React, { FormEvent, useState } from 'react'
+
+import { redirect, useSearchParams } from 'next/navigation'
 import { Form } from '@nextui-org/form'
 import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
-import React, { FormEvent, useState } from 'react'
-import { AuthLayout } from '@/components/auth/auth-layout'
-import { redirect } from 'next/navigation'
+
 import { login } from '@/lib/actions/auth'
 import { TLoginInfoDto } from '@/types/dto/user.dto'
+import { AuthLayout } from '@/components/auth/auth-layout'
+import { XOctagon } from '@geist-ui/icons'
 
 export default function Login() {
+  const redirected = useSearchParams()?.get('redirected')
   const [isLoading, setIsLoading] = useState(false)
+  const [errors, setErrors] = useState<{ server?: string }>({})
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setIsLoading(true)
@@ -19,13 +24,19 @@ export default function Login() {
       new FormData(e.currentTarget),
     ) as TLoginInfoDto
 
-    const { status } = await login(data)
+    const { status, error } = await login(data)
     if (status === 200) redirect('/')
+    setErrors({ server: error })
     setIsLoading(false)
   }
 
   return (
-    <AuthLayout>
+    <AuthLayout serverError={errors.server}>
+      {redirected && (
+        <div className='flex absolute bg-red-500/35 p-5 text-gray-700 gap-3 rounded-md top-7'>
+          <XOctagon color='red' /> You should login first!
+        </div>
+      )}
       <Form
         className='justify-center items-center w-full space-y-4'
         validationBehavior='native'

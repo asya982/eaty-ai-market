@@ -1,15 +1,15 @@
-import { IAllergen } from "@/models/Allergen";
-import { ICategory } from "@/models/Category";
-import mongoose from "mongoose";
+import { IAllergen } from '@/models/Allergen'
+import { ICategory } from '@/models/Category'
+import mongoose, { Model } from 'mongoose'
 
 export interface IProduct extends mongoose.Document {
-  name: string;
-  quantity: number;
-  price: number;
-  description: string;
-  img: string;
-  category: ICategory;
-  allergens: IAllergen[];
+  name: string
+  quantity: number
+  price: number
+  description: string
+  img: string
+  category: ICategory
+  allergens: IAllergen[]
 }
 
 const ProductSchema = new mongoose.Schema<IProduct>({
@@ -39,16 +39,16 @@ const ProductSchema = new mongoose.Schema<IProduct>({
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Categories",
+    ref: 'Categories',
     required: true,
   },
   allergens: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Allergens",
+      ref: 'Allergens',
     },
   ],
-});
+})
 
-export const Product =
-  mongoose.models.Products || mongoose.model("Products", ProductSchema);
+export const Product: Model<IProduct> =
+  mongoose.models.Products || mongoose.model('Products', ProductSchema)
