@@ -1,10 +1,9 @@
 import { IProduct } from "./Product";
 import { IUser } from "@/models/User";
 import mongoose from "mongoose";
-
 export interface IOrder extends mongoose.Document {
   user: IUser;
-  products: [
+  productsList: [
     {
       product: IProduct;
       quantity: number;
@@ -16,14 +15,14 @@ export interface IOrder extends mongoose.Document {
 const OrderSchema = new mongoose.Schema<IOrder>({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
+    ref: "Users",
     required: true,
   },
-  products: [
+  productsList: [
     {
       product: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "products",
+        ref: "Products",
         required: true,
       },
       quantity: {

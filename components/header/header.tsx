@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import logo from '@/assets/store.png'
 import Cart from '@/components/header/cart'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Routes } from '@/enums/routes'
 import { Button } from '@nextui-org/react'
 import { logout } from '@/lib/actions/auth'
@@ -15,8 +15,14 @@ const WITHOUT_HEADER = [Routes.LOG_IN, Routes.SIGN_UP] as string[]
 
 export const Header: FC<{ isAuth?: boolean }> = ({ isAuth = false }) => {
   const pathname = usePathname()
+  const router = useRouter()
 
   if (WITHOUT_HEADER.includes(pathname)) return null
+
+  const handleLogout = async () => {
+    await logout()
+    router.push(Routes.INDEX)
+  }
 
   return (
     <header className='flex py-3 px-4 gap-5 shadow-md bg-transparent'>
@@ -30,11 +36,7 @@ export const Header: FC<{ isAuth?: boolean }> = ({ isAuth = false }) => {
         </div>
         {isAuth ? (
           <div className='flex items-center gap-5'>
-            <Button
-              variant='bordered'
-              color='warning'
-              onPress={async () => await logout()}
-            >
+            <Button variant='bordered' color='warning' onPress={handleLogout}>
               Log out
             </Button>
             <Cart />

@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <section>
       <section className="bg-transparent h-[80vh] flex items-center">
-        <div className="bg-[url('@/assets/landing.jpg')] bg-no-repeat bg-cover h-[100vh] w-full -z-10 absolute top-0"></div>
+        <div className="bg-[url('@/assets/landing.jpg')] bg-no-repeat bg-cover h-[100vh] w-full -z-10 absolute top-0 left-0"></div>
         <aside className="bg-black/40 w-1/3 rounded-md text-white p-3 text-center ml-10 flex flex-col items-center gap-3">
           <h1 className="font-playfair font-bold mb-2 text-2xl">
             Welcome to Eaty – Your Personal Shopping Assistant

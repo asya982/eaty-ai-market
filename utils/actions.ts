@@ -11,6 +11,6 @@ export const createAction = async (callback: () => Promise<any>, isProtected = f
         await dbConnect();
         return await callback()
     } catch (error) {
-        return { status: Status.SERVER_ERROR, error: error };
+        return { status: Status.SERVER_ERROR, error: error.message };
     }
 }

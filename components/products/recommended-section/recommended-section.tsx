@@ -47,7 +47,7 @@ export const RecommendedSection: FC<TRecommendedSectionProps> = ({
           {isPersonal ? 'You might like it' : 'Our customers liked it'}
         </h2>
       </Badge>
-      <section className={styles.carousel}>
+      <section className={`${styles.carousel} rounded-md`}>
         {productList()}
         {productList(true)}
       </section>

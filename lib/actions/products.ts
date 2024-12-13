@@ -9,7 +9,7 @@ export const getProducts = async ({ query, currentPage }: { query: string, curre
   try {
     await dbConnect();
 
-    const total = await Product.countDocuments()
+    const total = await Product.countDocuments().where({ name: { $regex: query, $options: 'i' }, })
 
     const products = await Product.find()
       .limit(perPage)
@@ -21,12 +21,8 @@ export const getProducts = async ({ query, currentPage }: { query: string, curre
       .lean()
       .exec();
 
-    const serializedProducts = products.map((product) => ({
-      ...product,
-      _id: product._id.toString(),
-    })) as unknown as TProducts[];
 
-    return { status: Status.SUCCESS, products: serializedProducts, total: Math.ceil(total / perPage) };
+    return { status: Status.SUCCESS, products: JSON.parse(JSON.stringify(products)), total: Math.ceil(total / perPage) };
   } catch (error) {
     return { status: Status.SERVER_ERROR, error };
   }
@@ -44,12 +40,7 @@ export const getProductById = async (_id: string) => {
 
     if (!product) return { status: Status.NOT_FOUND }
 
-    const serializedProduct = {
-      ...product,
-      _id: product._id.toString(),
-    } as unknown as TProducts;
-
-    return { status: Status.SUCCESS, product: serializedProduct };
+    return { status: Status.SUCCESS, product: JSON.parse(JSON.stringify(product)) };
   } catch (error) {
     return { status: Status.SERVER_ERROR, error };
   }
@@ -61,7 +52,7 @@ export const getCategories = async () => {
 
     const categories = await Category.find().select('-v').lean().exec();
 
-    return { status: Status.SUCCESS, categories: categories.map(el => ({ ...el, _id: el._id.toString() })) };
+    return { status: Status.SUCCESS, categories: JSON.parse(JSON.stringify(categories)) };
   } catch (error) {
     return { status: Status.SERVER_ERROR, error };
   }

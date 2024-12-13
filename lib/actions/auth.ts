@@ -7,10 +7,12 @@ import { TUser } from "@/types/user";
 import { comparePasswords, hashPassword } from "@/utils/passwordHelpers";
 import { getUserByEmail } from "./users";
 import { Errors, Status } from "@/constants/api_response";
+import { seedDatabase } from "../seeds/seed";
 
 export const createUser = async (userData: TUser) => {
   try {
     await dbConnect();
+    await seedDatabase()
     const isAlreadyExists = await getUserByEmail(userData.email);
 
     if (isAlreadyExists) return { status: Status.BAD_REQUEST, error: Errors.ALREADY_EXISTS('User') };
@@ -23,7 +25,7 @@ export const createUser = async (userData: TUser) => {
 
     return { status: Status.CREATED, name: user.name };
   } catch (error) {
-    return { status: Status.SERVER_ERROR, error };
+    return { status: Status.SERVER_ERROR, error: error.message };
   }
 };
 

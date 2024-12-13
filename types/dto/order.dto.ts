@@ -1,6 +1,5 @@
 export type createOrderDto = {
     products: Array<OrderProduct>;
-    userId: string;
 }
 
 export type OrderProduct = {

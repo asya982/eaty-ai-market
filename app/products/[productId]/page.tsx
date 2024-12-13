@@ -15,11 +15,9 @@ const Meal = async ({ params }) => {
   if (status === Status.NOT_FOUND || !product) notFound()
 
   return (
-    <section className='flex m-6 gap-6'>
-      <div className={styles.image}>
-        <Image shadow='sm' src={product.img} alt={product.name} />
-      </div>
-      <div className='rounded-lg border-orange-950 p-4 flex flex-col gap-4'>
+    <section className='flex gap-6 justify-evenly items-center'>
+        <Image shadow='sm' src={product.img} alt={product.name} style={{height: '50vh'}} className='h-[50vh]' />
+      <div className='rounded-lg border-2 border-orange-950 p-4 flex flex-col gap-4'>
         <h1 className='font-playfair text-large font-bold'>{product.name}</h1>
         <p>{product.description}</p>
         <Category {...product.category} />
@@ -30,7 +28,12 @@ const Meal = async ({ params }) => {
         <p>
           Price: <b>${product.price}</b>
         </p>
-        <AddToCart price={product.price} productId={product._id} />
+        <AddToCart
+          price={product.price}
+          img={product.img}
+          name={product.name}
+          productId={product._id}
+        />
       </div>
     </section>
   )

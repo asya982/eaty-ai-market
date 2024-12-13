@@ -45,7 +45,7 @@ Serve immediately and enjoy a healthy, nut-free meal! Here your list of healthy 
 
 const Chat = () => {
   return (
-    <section className='m-6 flex flex-col max-h-[82vh]'>
+    <section className='flex flex-col max-h-[82vh]'>
       <div className='flex justify-between items-center border-b-2 pb-2'>
         <h1 className='font-playfair font-bold text-2xl'>Eaty AI Chat</h1>
         <div className='text-end text-md'>
